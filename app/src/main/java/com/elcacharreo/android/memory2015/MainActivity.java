@@ -48,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
     }
     boolean bEsLaPrimera=true;
     int idBotonPrimeroPulsado=0;
-    int idImagenBotonPulsado=0;
+    int idImagenPrimerBotonPulsado=0;
     public void clickImagen(View v)
     {
-
+        // TODO: ¿Y si el boton ya esta pulsado?
         // TODO: Buscar boton para ver su imagen
 
         int iNumeroBotonPulsado=0;
@@ -74,10 +74,35 @@ public class MainActivity extends AppCompatActivity {
         if(bEsLaPrimera==true)
         {
             idBotonPrimeroPulsado=v.getId();
-            idImagenBotonPulsado=imagenBoton[iNumeroBotonPulsado];
+            idImagenPrimerBotonPulsado=imagenBoton[iNumeroBotonPulsado];
 
             bEsLaPrimera=false;
         }
+        else
+        {
+            if(idImagenPrimerBotonPulsado==imagenBoton[iNumeroBotonPulsado])
+            {
+                iPuntuacion=iPuntuacion+10;
+                // TODO: actualizar visor puntuacion
+                // TODO: sonido victoria
+
+            }
+            else
+            {
+                // TODO: sonido fracaso total
+
+                ivPulsado.setImageResource(R.drawable.interrogacion);
+                ImageView ivPrimera=(ImageView)findViewById(idImagenPrimerBotonPulsado);
+                ivPrimera.setImageResource(R.drawable.interrogacion);
+
+
+            }
+
+            bEsLaPrimera=true;
+
+
+        }
+
 
 
 
