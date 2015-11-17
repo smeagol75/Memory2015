@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         {
             idBotonPrimeroPulsado=v.getId();
             idImagenPrimerBotonPulsado=imagenBoton[iNumeroBotonPulsado];
-
+            // TODO: No se puede clickear
             bEsLaPrimera=false;
         }
         else
@@ -85,14 +85,20 @@ public class MainActivity extends AppCompatActivity {
                 iPuntuacion=iPuntuacion+10;
                 // TODO: actualizar visor puntuacion
                 // TODO: sonido victoria
-
+                // TODO: No cliceable la 2ª
             }
             else
             {
                 // TODO: sonido fracaso total
+                try {
+                    Thread.sleep(500);
+                }
+                catch(Exception c)
+                {
 
+                }
                 ivPulsado.setImageResource(R.drawable.interrogacion);
-                ImageView ivPrimera=(ImageView)findViewById(idImagenPrimerBotonPulsado);
+                ImageView ivPrimera=(ImageView)findViewById(idBotonPrimeroPulsado);
                 ivPrimera.setImageResource(R.drawable.interrogacion);
 
 
