@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Memory2015</string>
+    <string name="txtInicial">Pulse Start para comenzar</string>
+    <string name="txtTiempo">Tiempo</string>
+    <string name="btStart">Start</string>
+    <string name="btStop">Stop</string>
+</resources>
