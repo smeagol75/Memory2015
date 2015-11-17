@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         // TODO: hacer visible Las cartas (tablelayout.setVisibility(Visible) );
 
     }
-    boolean bEsLaPrimera=true;
+    boolean bEsLaPrimera=true; // Para saber si es la primera o 2ª carta que volteamos
     int idBotonPrimeroPulsado=0;
     int idImagenPrimerBotonPulsado=0;
     int idBotonSegundoPulsado=0;
