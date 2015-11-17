@@ -1,6 +1,7 @@
 package com.elcacharreo.android.memory2015;
 
 import android.media.Image;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     boolean bEsLaPrimera=true;
     int idBotonPrimeroPulsado=0;
     int idImagenPrimerBotonPulsado=0;
+    int idBotonSegundoPulsado=0;
     public void clickImagen(View v)
     {
         // TODO: ¿Y si el boton ya esta pulsado?
@@ -90,16 +92,17 @@ public class MainActivity extends AppCompatActivity {
             else
             {
                 // TODO: sonido fracaso total
-                try {
-                    Thread.sleep(500);
-                }
-                catch(Exception c)
-                {
+                idBotonSegundoPulsado=v.getId();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        ImageView ivSegunda= (ImageView) findViewById(idBotonSegundoPulsado);
+                        ivSegunda.setImageResource(R.drawable.interrogacion);
+                        ImageView ivPrimera = (ImageView) findViewById(idBotonPrimeroPulsado);
+                        ivPrimera.setImageResource(R.drawable.interrogacion);
+                    }
+                }, 500);
 
-                }
-                ivPulsado.setImageResource(R.drawable.interrogacion);
-                ImageView ivPrimera=(ImageView)findViewById(idBotonPrimeroPulsado);
-                ivPrimera.setImageResource(R.drawable.interrogacion);
 
 
             }
