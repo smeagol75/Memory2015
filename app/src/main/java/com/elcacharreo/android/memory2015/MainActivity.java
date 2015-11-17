@@ -46,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
         // TODO: hacer visible Las cartas (tablelayout.setVisibility(Visible) );
 
     }
-
+    boolean bEsLaPrimera=true;
+    int idBotonPrimeroPulsado=0;
+    int idImagenBotonPulsado=0;
     public void clickImagen(View v)
     {
 
@@ -67,6 +69,19 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO: Mostrar imagen (iv.setImageResource(R.drawable.IMAGEN); )
         ivPulsado.setImageResource(imagenBoton[iNumeroBotonPulsado]);
+
+
+        if(bEsLaPrimera==true)
+        {
+            idBotonPrimeroPulsado=v.getId();
+            idImagenBotonPulsado=imagenBoton[iNumeroBotonPulsado];
+
+            bEsLaPrimera=false;
+        }
+
+
+
+
 
 
 
