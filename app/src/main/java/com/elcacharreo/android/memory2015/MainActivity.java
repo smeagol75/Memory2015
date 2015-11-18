@@ -20,9 +20,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // TODO: cargar sonidos
+   /*     if((android.os.Build.VERSION.SDK_INT) >= 21){
+            SoundPool.Builder sp21 = new SoundPool.Builder();
+            sp21.setMaxStreams(5);
+            sp = sp21.build();
+        }
+        else */
+        {
+            sp = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
 
-
-         sp=new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        }
          iAplauso=sp.load(this,R.raw.applause,1);
          iEvil=sp.load(this,R.raw.evil,0);
          iAcierto=sp.load(this,R.raw.sonido_acierto,0);
@@ -45,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     {
         // TODO: rellenar aleatoriamente (rellenar imagenBoton )
 
-        // TODO: cargar sonidos
+
 
         // TODO: puntuacion a 0
         iPuntuacion=0;
