@@ -4,6 +4,7 @@ import android.media.AudioManager;
 import android.media.Image;
 import android.media.SoundPool;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -123,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         inicializacion();
 
         // TODO: hacer visible Las cartas (tablelayout.setVisibility(Visible) );
+        crono.setBase(SystemClock.elapsedRealtime());
         crono.start();
 
         tl.setVisibility(View.VISIBLE);
