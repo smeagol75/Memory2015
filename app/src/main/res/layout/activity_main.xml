@@ -101,24 +101,14 @@
 
     </TableLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/txtTiempo"
-        android:id="@+id/textView"
-        android:textSize="50dp"
-        android:textAlignment="center"
-        android:layout_below="@+id/tableLayout"
-        android:layout_centerHorizontal="true" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btStart"
         android:id="@+id/button"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="botonStart" />
 
     <Button
         android:layout_width="wrap_content"
@@ -126,6 +116,15 @@
         android:text="@string/btStop"
         android:id="@+id/button2"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="botonStop" />
+
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chronometer"
+        android:layout_above="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:textSize="45sp" />
 
 </RelativeLayout>
