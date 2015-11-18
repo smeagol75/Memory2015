@@ -1,18 +1,32 @@
 package com.elcacharreo.android.memory2015;
 
+import android.media.AudioManager;
 import android.media.Image;
+import android.media.SoundPool;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    SoundPool sp;
+    int iAplauso;
+    int iEvil;
+    int iAcierto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+         sp=new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+         iAplauso=sp.load(this,R.raw.applause,1);
+         iEvil=sp.load(this,R.raw.evil,0);
+         iAcierto=sp.load(this,R.raw.sonido_acierto,0);
+        
     }
 
     int []imagenBoton={R.drawable.conejo,R.drawable.oveja,R.drawable.pollo,
@@ -66,12 +80,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
         ImageView ivPulsado=(ImageView)v;
 
         // TODO: Mostrar imagen (iv.setImageResource(R.drawable.IMAGEN); )
         ivPulsado.setImageResource(imagenBoton[iNumeroBotonPulsado]);
-
 
         if(bEsLaPrimera==true)
         {
@@ -79,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
             idImagenPrimerBotonPulsado=imagenBoton[iNumeroBotonPulsado];
             // TODO: No se puede clickear
             bEsLaPrimera=false;
+
+            sp.play(iAcierto,1,1,1,0,1);
         }
         else
         {
@@ -86,12 +100,16 @@ public class MainActivity extends AppCompatActivity {
             {
                 iPuntuacion=iPuntuacion+10;
                 // TODO: actualizar visor puntuacion
+                TextView tvPunto=(TextView)findViewById(R.id.tvAnuncio);
+                tvPunto.setText(Integer.toString(iPuntuacion));
                 // TODO: sonido victoria
+                sp.play(iAplauso,1,1,1,0,1);
                 // TODO: No cliceable la 2ª
             }
             else
             {
                 // TODO: sonido fracaso total
+                sp.play(iEvil,1,1,1,0,1);
                 idBotonSegundoPulsado=v.getId();
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
