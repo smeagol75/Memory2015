@@ -1,8 +1,10 @@
 package com.elcacharreo.android.memory2015;
 
+import android.annotation.TargetApi;
 import android.media.AudioManager;
 import android.media.Image;
 import android.media.SoundPool;
+import android.os.Build;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     int iAcierto;
     TableLayout tl;
     Chronometer crono;
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,13 +35,19 @@ public class MainActivity extends AppCompatActivity {
 
         crono=(Chronometer)findViewById(R.id.chronometer);
 
-        // TODO: cargar sonidos
-   /*     if((android.os.Build.VERSION.SDK_INT) >= 21){
-            SoundPool.Builder sp21 = new SoundPool.Builder();
-            sp21.setMaxStreams(5);
-            sp = sp21.build();
-        }
-        else */
+
+       if((android.os.Build.VERSION.SDK_INT) >= 21){
+           SoundPool.Builder sp21 = null;
+           if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+               sp21 = new SoundPool.Builder();
+           }
+
+           if (sp21 != null) {
+               sp21.setMaxStreams(5);
+               sp = sp21.build();
+           }
+       }
+        else
         {
             sp = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
 
@@ -102,6 +111,17 @@ public class MainActivity extends AppCompatActivity {
 
     void inicializacion()
     {
+
+        //Recorremos toda la tabla y le ponemos interrogación cada vez que se inicie en cada view
+        for(int i=0;i<12;i++){
+           int boton =idBoton[i];
+            ImageView  ivtemp= (ImageView) findViewById(boton);
+            ivtemp.setImageResource(R.drawable.interrogacion);
+            //Le volvemos a dejar accesible ya que al haber acertado todas al principio quedan inaccesibles
+            ivtemp.setClickable(true);
+
+        }
+
         // TODO: rellenar aleatoriamente (rellenar imagenBoton )
 
         reparteCartas();  // CAMBIOS PARA CARTAS ALEATORIAS
@@ -134,6 +154,11 @@ public class MainActivity extends AppCompatActivity {
     int idBotonPrimeroPulsado=0;
     int idImagenPrimerBotonPulsado=0;
     int idBotonSegundoPulsado=0;
+    //creo dos imageview para controlar los que han sido pulsados y ponerles o
+    // quitarles la propiedad de clickable
+    ImageView ivPrimeroPulsado=null;
+    ImageView ivSegundoPulsado=null;
+
     public void clickImagen(View v)
     {
         // TODO: ¿Y si el boton ya esta pulsado?
@@ -154,11 +179,15 @@ public class MainActivity extends AppCompatActivity {
         // TODO: Mostrar imagen (iv.setImageResource(R.drawable.IMAGEN); )
         ivPulsado.setImageResource(iCartas[iNumeroBotonPulsado]);
 
-        if(bEsLaPrimera==true)
+
+        if(bEsLaPrimera)
         {
+
             idBotonPrimeroPulsado=v.getId();
             idImagenPrimerBotonPulsado=iCartas[iNumeroBotonPulsado];
-            // TODO: No se puede clickear
+           //Evitamos que el botón esté accesible para darle más
+            ivPrimeroPulsado=ivPulsado;
+            ivPrimeroPulsado.setClickable(false);
             bEsLaPrimera=false;
 
             sp.play(iAcierto,1,1,1,0,1);
@@ -167,6 +196,9 @@ public class MainActivity extends AppCompatActivity {
         {
             if(idImagenPrimerBotonPulsado==iCartas[iNumeroBotonPulsado])
             {
+               //Evitamos que se pulse de nuevo el segundo
+                ivSegundoPulsado=ivPulsado;
+                ivSegundoPulsado.setClickable(false);
                 iPuntuacion=iPuntuacion+10; // TODO: puntuacion dependiendo del tiempo
                 iContadorCartasAcertadas=iContadorCartasAcertadas+1;
                 // TODO: actualizar visor puntuacion
@@ -174,7 +206,8 @@ public class MainActivity extends AppCompatActivity {
                 tvPunto.setText(Integer.toString(iPuntuacion));
                 // TODO: sonido victoria
                 sp.play(iAplauso,1,1,1,0,1);
-                // TODO: No clicable la 2ª
+                //evitamos que pulsen de nuevo el segundo
+
 
                 if(iContadorCartasAcertadas==6)
                 {
@@ -194,10 +227,16 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         ImageView ivSegunda= (ImageView) findViewById(idBotonSegundoPulsado);
                         ivSegunda.setImageResource(R.drawable.interrogacion);
+                        //En caso de fallo les volvemos a dejar clickables, si aciertan se quedan sin poder hacer click
+
                         ImageView ivPrimera = (ImageView) findViewById(idBotonPrimeroPulsado);
                         ivPrimera.setImageResource(R.drawable.interrogacion);
+
                     }
+
                 }, 500);
+                ivPrimeroPulsado.setClickable(true);
+                ivPrimeroPulsado.setClickable(true);
             }
 
             bEsLaPrimera=true;
