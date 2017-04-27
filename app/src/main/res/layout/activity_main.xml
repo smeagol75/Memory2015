@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rellay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -10,22 +11,25 @@
     tools:context="com.elcacharreo.android.memory2015.MainActivity">
 
     <TextView
+        android:id="@+id/tvAnuncio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/txtInicial"
-        android:id="@+id/tvAnuncio"
-        android:textSize="40dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center" />
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:text="@string/txtInicial"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="36sp" />
 
     <TableLayout
+        android:id="@+id/tableLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/tvAnuncio"
         android:layout_centerHorizontal="true"
-        android:id="@+id/tableLayout">
+        android:layout_marginTop="19dp">
 
         <TableRow
             android:layout_width="match_parent"
@@ -34,97 +38,177 @@
             <ImageView
                 android:id="@+id/iv11"
                 style="@style/imagen"
-                 />
+                tools:ignore="ContentDescription" />
 
             <ImageView
+                android:id="@+id/iv12"
                 style="@style/imagen"
-                android:id="@+id/iv12" />
+                tools:ignore="ContentDescription" />
 
             <ImageView
+                android:id="@+id/iv13"
                 style="@style/imagen"
-                android:id="@+id/iv13" />
+                tools:ignore="ContentDescription" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/iv21"
                 style="@style/imagen"
-                android:id="@+id/iv21"/>
+                tools:ignore="ContentDescription" />
 
             <ImageView
+                android:id="@+id/iv22"
                 style="@style/imagen"
-                android:id="@+id/iv22" />
+                tools:ignore="ContentDescription" />
 
             <ImageView
+                android:id="@+id/iv23"
                 style="@style/imagen"
-                android:id="@+id/iv23" />
+                tools:ignore="ContentDescription" />
         </TableRow>
-
 
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <ImageView
+                android:id="@+id/iv31"
                 style="@style/imagen"
-                android:id="@+id/iv31" />
+                tools:ignore="ContentDescription" />
 
             <ImageView
+                android:id="@+id/iv32"
                 style="@style/imagen"
-                android:id="@+id/iv32" />
+                tools:ignore="ContentDescription" />
 
             <ImageView
+                android:id="@+id/iv33"
                 style="@style/imagen"
-                android:id="@+id/iv33" />
+                tools:ignore="ContentDescription" />
 
         </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
 
-                <ImageView
-                    style="@style/imagen"
-                    android:id="@+id/iv41" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-                <ImageView
-                    style="@style/imagen"
-                    android:id="@+id/iv42" />
+            <ImageView
+                android:id="@+id/iv41"
+                style="@style/imagen"
+                tools:ignore="ContentDescription" />
 
-                <ImageView
-                    style="@style/imagen"
-                    android:id="@+id/iv43" />
-            </TableRow>
+            <ImageView
+                android:id="@+id/iv42"
+                style="@style/imagen"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/iv43"
+                style="@style/imagen"
+                tools:ignore="ContentDescription" />
+
+        </TableRow>
 
 
     </TableLayout>
 
-    <Button
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btStart"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:onClick="botonStart" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btStop"
-        android:id="@+id/button2"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:onClick="botonStop" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tableLayout"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="15dp"
+        android:weightSum="1">
 
-    <Chronometer
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/chronometer"
-        android:layout_above="@+id/button2"
+        <Button
+            android:id="@+id/button"
+            android:layout_width="78dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="0.18"
+            android:onClick="botonStart"
+            android:text="@string/btStart" />
+
+        <Chronometer
+            android:id="@+id/chronometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="0.39"
+            android:gravity="center_horizontal"
+            android:textSize="30sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="78dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="0.14"
+            android:onClick="botonStop"
+            android:text="@string/btStop" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
-        android:textSize="45sp" />
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:weightSum="1">
+
+        <Spinner
+            android:id="@+id/spImagenes"
+            android:layout_width="114dp"
+            android:layout_height="34dp"
+            android:layout_margin="3dp"
+            android:spinnerMode="dropdown"
+            android:layout_weight="0.18" />
+
+        <Spinner
+            android:id="@+id/spColor"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_margin="3dp"
+            android:layout_weight="0.69"
+            android:spinnerMode="dropdown" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="false"
+        android:layout_below="@+id/linearLayout"
+        android:layout_marginTop="40dp"
+        android:foregroundGravity="center_horizontal|center"
+        android:gravity="center_horizontal|center"
+        android:orientation="horizontal">
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:padding="8dp"
+            android:text="@string/sound"
+            android:textOff="@string/sound_off"
+            android:textOn="@string/sound_on" />
+    </LinearLayout>
 
 </RelativeLayout>

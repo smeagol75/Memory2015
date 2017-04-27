@@ -1,7 +1,10 @@
 <resources>
-    <string name="app_name">Memory2015</string>
-    <string name="txtInicial">Pulse Start para comenzar</string>
+    <string name="app_name">Parejas Iria y Asier</string>
+    <string name="txtInicial">Pulsa Jugar!!</string>
     <string name="txtTiempo">Tiempo</string>
-    <string name="btStart">Start</string>
-    <string name="btStop">Stop</string>
+    <string name="btStart">Jugar</string>
+    <string name="btStop">Para</string>
+    <string name="sound">Sound</string>
+    <string name="sound_off">Sound OFF</string>
+    <string name="sound_on">Sound On</string>
 </resources>
