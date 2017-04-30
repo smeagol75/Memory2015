@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
         });
         //Hacemos lo mismo con el spinner para elegir las imágenes que vamos a usar
         Spinner sptipoimagenes = (Spinner) findViewById(R.id.spImagenes);
-        String[] tipos = {"Animales","Iria"};
+        String[] tipos = {"Animales","Iria","Patrulla Canina","Peppa Pig", "Soy Luna"};
         sptipoimagenes.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, tipos));
 
         sptipoimagenes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -158,6 +158,24 @@ public class MainActivity extends AppCompatActivity {
                             iDibujos[i]=iamigas[i];
                         }
                         break;
+
+                    case 2:
+                        for(int i=0;i<12;i++){
+                            iDibujos[i]=ipcanina[i];
+                        }
+                        break;
+                    case 3:
+                        for(int i=0;i<12;i++){
+                            iDibujos[i]=ipeppapig[i];
+                        }
+                        break;
+
+                    case 4:
+                        for(int i=0;i<12;i++){
+                            iDibujos[i]= iluna[i];
+                        }
+                        break;
+
                    default:
                        for(int i=0;i<12;i++){
                            iDibujos[i]=ianimales[i];
@@ -197,6 +215,23 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.iria,R.drawable.laia,R.drawable.paula,
             R.drawable.alba,R.drawable.asier,R.drawable.esther,
             R.drawable.iria,R.drawable.laia,R.drawable.paula
+    };
+
+    int []ipcanina={R.drawable.chase,R.drawable.marshall,R.drawable.rocky,
+            R.drawable.rubble,R.drawable.skye,R.drawable.zuma,
+            R.drawable.chase,R.drawable.marshall,R.drawable.rocky,
+            R.drawable.rubble,R.drawable.skye,R.drawable.zuma
+    };
+    int []ipeppapig={R.drawable.peppa,R.drawable.george,R.drawable.dinosaurio,
+            R.drawable.pappapig,R.drawable.mammapig,R.drawable.rebecca,
+            R.drawable.peppa,R.drawable.george,R.drawable.dinosaurio,
+            R.drawable.pappapig,R.drawable.mammapig,R.drawable.rebecca
+    };
+
+    int []iluna={R.drawable.luna,R.drawable.ambar,R.drawable.gaston,
+            R.drawable.nina,R.drawable.mateo,R.drawable.simon,
+            R.drawable.luna,R.drawable.ambar,R.drawable.gaston,
+            R.drawable.nina,R.drawable.mateo,R.drawable.simon
     };
 
 
