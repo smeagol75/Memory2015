@@ -14,14 +14,32 @@
         android:id="@+id/tvAnuncio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignRight="@+id/switch1"
+        android:layout_alignTop="@+id/switch1"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="15dp"
+        android:gravity="right"
         android:text="@string/txtInicial"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="36sp" />
+        android:textSize="24sp"
+        tools:ignore="NotSibling,RtlHardcoded" />
+
+    <Chronometer
+        android:id="@+id/chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:gravity="center_horizontal"
+        android:textSize="30sp"
+        android:visibility="visible"
+        tools:ignore="RtlHardcoded"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentTop="true" />
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -140,15 +158,16 @@
             android:onClick="botonStart"
             android:text="@string/btStart" />
 
-        <Chronometer
-            android:id="@+id/chronometer"
+        <Switch
+            android:id="@+id/switch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_weight="0.39"
-            android:gravity="center_horizontal"
-            android:textSize="30sp"
-            android:visibility="visible" />
+            android:layout_margin="3dp"
+            android:layout_weight="0.18"
+            android:padding="8dp"
+            android:text="@string/sound"
+            android:textOff="@string/sound_off"
+            android:textOn="@string/sound_on" />
 
         <Button
             android:id="@+id/button2"
@@ -187,28 +206,6 @@
             android:layout_weight="0.69"
             android:spinnerMode="dropdown" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentStart="false"
-        android:layout_below="@+id/linearLayout"
-        android:layout_marginTop="40dp"
-        android:foregroundGravity="center_horizontal|center"
-        android:gravity="center_horizontal|center"
-        android:orientation="horizontal">
-
-        <Switch
-            android:id="@+id/switch1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="3dp"
-            android:padding="8dp"
-            android:text="@string/sound"
-            android:textOff="@string/sound_off"
-            android:textOn="@string/sound_on" />
     </LinearLayout>
 
 </RelativeLayout>
